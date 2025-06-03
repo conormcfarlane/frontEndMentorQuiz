@@ -3,13 +3,14 @@ import iconSunLight from '../../public/images/icon-sun-light.svg'
 import iconSunDark from '../../public/images/icon-sun-dark.svg'
 import iconMoonLight from '../../public/images/icon-moon-light.svg'
 import iconMoonDark from '../../public/images/icon-moon-dark.svg'
+import { useQuiz } from '../context/QuizContext'
 
-export default function AppWrapper({children, category, onToggleDarkMode}) {
+export default function AppWrapper({children, category, onToggleDarkMode,isDarkMode}) {
   return (
     <div className={`
          p-6 min-h-screen bg-no-repeat bg-cover transition-colors
-         bg-blue-50 flex justify-center
-        bg-[url('public/images/pattern-background-mobile-light.svg')]
+         bg-blue-50 flex justify-center dark:bg-gray-800
+        bg-[url('/images/pattern-background-mobile-light.svg')]
         dark:bg-[url('/images/pattern-background-mobile-dark.svg')]
         md:bg-[url('/images/pattern-background-tablet-light.svg')]
         md:dark:bg-[url('/images/pattern-background-tablet-dark.svg')]
@@ -27,9 +28,10 @@ export default function AppWrapper({children, category, onToggleDarkMode}) {
                 <img src={iconSunDark} className='dark:hidden h-4' alt="" />
                 {/* Dark Mode Sun */}
                 <img src={iconSunLight} className='hidden dark:block h-4' alt="" />
-                <button onClick={onToggleDarkMode}>
+                <button onClick={onToggleDarkMode} className='cursor-pointer'>
                     <div className='bg-purple-600 w-12 h-6 p-1 rounded-2xl flex items-center'>
-                        <div className='w-5 h-4.5 rounded-2xl bg-white'></div>
+                        <div className={`w-5 h-4 rounded-2xl bg-white transition-all duration-500
+                            ${isDarkMode ? 'translate-x-5' : 'ml-0'}`}></div>
                     </div>
                 </button>
                 {/* Light Mode Moon */}

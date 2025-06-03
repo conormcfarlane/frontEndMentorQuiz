@@ -8,6 +8,7 @@ export function QuizProvider({children}){
     const [score,setScore] = useState(0)
     const [answers, setAnswers] = useState([])
     const [category, setCategory] = useState('')
+    const [isDarkMode, setIsDarkMode] = useState(false)
     
     // reset when restarted
     const resetQuiz = () => {
@@ -15,10 +16,15 @@ export function QuizProvider({children}){
         setAnswers([])
         setCategory('')
     }
+    const onToggleDarkMode = () => {
+        document.documentElement.classList.toggle('dark')
+        setIsDarkMode(prev => !prev)
+        console.log('dark')
+    }
 
     return(
         // Provdies app with state and setters
-        <QuizContext.Provider value={{score,setScore,answers,setAnswers,category,setCategory,resetQuiz}}>
+        <QuizContext.Provider value={{score,setScore,answers,setAnswers,category,setCategory,resetQuiz,isDarkMode,onToggleDarkMode}}>
             {children}
         </QuizContext.Provider>
     )

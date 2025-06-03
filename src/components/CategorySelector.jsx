@@ -15,18 +15,18 @@ export default function CategorySelector() {
   return (
     <section className='flex flex-col gap-10 lg:flex-row mt-23 lg:justify-between'>
         <div className='flex flex-col gap-4 lg:w-4/8'>
-            <h2 className='text-4xl md:text-6xl text-blue-900'>Welcome to the <strong>Frontend Quiz!</strong></h2>
-            <p className='text-sm text-gray-500'>Pick a subject to get started</p>
+            <h2 className='text-4xl md:text-6xl text-blue-900 dark:text-white'>Welcome to the <strong>Frontend Quiz!</strong></h2>
+            <p className='text-sm text-gray-500 dark:text-white'>Pick a subject to get started</p>
         </div>
         <div className='flex flex-col gap-6 lg:w-4/8'>
             {categories.map((category) => {
                 return(
-                    <div key={category.name} className='flex bg-white rounded-xl items-center gap-4 p-4 cursor-pointer'>
+                    <div key={category.name} className='flex bg-white dark:bg-gray-700 rounded-xl items-center gap-4 p-4 cursor-pointer '>
                         <div className={`${category.bgColor} rounded-xl p-1 h-10`}>
                              <img src={category.img} alt="" className='h-8' />
                         </div>
                        
-                        <p className='font-semibold md:text-2xl'>{category.name}</p>
+                        <p className='font-semibold md:text-2xl dark:text-white'>{category.name}</p>
                     </div>
                 )
             })}
