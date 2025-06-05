@@ -20,7 +20,7 @@ export default function AppWrapper({children, category, onToggleDarkMode,isDarkM
     `}>
         <div className='md:max-w-[650px] lg:max-w-[1157px]'>
              {/* Header */}
-        <header className='flex justify-between'>
+        <header className='flex justify-between '>
            <span>{category || ''}</span>
 
             <div className='flex justify-self-end gap-2 items-center'>
