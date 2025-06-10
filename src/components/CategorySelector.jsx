@@ -8,6 +8,7 @@ import {useQuiz} from '../context/QuizContext'
 
 
 export default function CategorySelector() {
+    const {setCategory, setSelectedCategory} = useQuiz()
     const categories = [
         {name: 'HTML',img: iconHTML,bgColor: 'bg-orange-100'},
         {name: 'CSS',img: iconCSS,bgColor: 'bg-green-100'},
@@ -15,10 +16,10 @@ export default function CategorySelector() {
         {name: 'Accessibility',img: iconAccessibility,bgColor: 'bg-purple-100'}
     ]
     const navigate = useNavigate()
-    const {setCategory} = useQuiz()
-    const handleCategoryClick = (categoryName) => {
-        setCategory(categoryName)
-        navigate(`/quiz/${categoryName}/0`)
+    const handleCategoryClick = (categoryObj) => {
+        setCategory(categoryObj.name) 
+        setSelectedCategory(categoryObj) //Stores whole object
+        navigate(`/quiz/${categoryObj.name}/0`)
     }
   return (
     <section className='flex flex-col gap-10 lg:flex-row mt-23 lg:justify-between'>
@@ -31,7 +32,7 @@ export default function CategorySelector() {
                 return(
                     <div key={category.name} 
                     className='flex bg-white dark:bg-gray-700 rounded-xl items-center gap-4 p-4 cursor-pointer
-                 '  onClick={() => handleCategoryClick(category.name)}
+                 '  onClick={() => handleCategoryClick(category)}
                     >
                         <div className={`${category.bgColor} rounded-xl p-1 h-10`}>
                              <img src={category.img} alt="" className='h-8' />

@@ -6,6 +6,7 @@ import iconMoonDark from '../../public/images/icon-moon-dark.svg'
 import { useQuiz } from '../context/QuizContext'
 
 export default function AppWrapper({children, category, onToggleDarkMode,isDarkMode}) {
+    const {selectedCategory} = useQuiz()
   return (
     <div className={`
          p-6 min-h-screen bg-no-repeat bg-cover transition-colors
@@ -18,10 +19,14 @@ export default function AppWrapper({children, category, onToggleDarkMode,isDarkM
         lg:dark:bg-[url('/images/pattern-background-desktop-dark.svg')]
         
     `}>
-        <div className='md:max-w-[650px] lg:max-w-[1157px]'>
+        <div className='w-full md:max-w-[650px] lg:max-w-[1157px] mx-auto'>
              {/* Header */}
         <header className='flex justify-between '>
-           <span>{category || ''}</span>
+            <div className='flex items-center gap-4'>
+            <img src={selectedCategory?.img} alt="" className='dark:bg-cyan-50 rounded-xl' />
+           <span className='dark:text-white md:text-2xl font-semibold'>{category || ''}</span>
+            </div>
+           
 
             <div className='flex justify-self-end gap-2 items-center'>
                 {/* Light Mode Sun */}
